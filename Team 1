@@ -17,3 +17,24 @@ ORDER BY COUNT(PaymentType) DESC;
 SELECT ProductID, StrainName
 FROM Sales
 ORDER BY StrainName LIMIT MIN 5;
+
+/* *** How many of our clients grow the weed themselves that they sell versus weed imported from another state? *** */
+SELECT COUNT(BusinessName) 
+FROM CustomerTable 
+WHERE State = ‘California’ , ‘Colorado’ etc. 
+
+/* *** Are indica strains selling more on the weekends for those looking to stay in and watch movies, netflix etc.? *** */
+SELECT ProductID, StrainName 
+FROM Sales 
+WHERE SaleDate 
+BETWEEN #31/05/2019# AND #03/06/2019#
+
+/* *** What percent of our clients’ sales in the Midwest are for recreational vs medical? *** */
+SELECT BusinessName, TypeofMarijuana 
+FROM SalesTable 
+WHERE Region = ‘Midwest’ ;
+
+/* *** What were our last shipments from the past x amount of time(month, week, year)? *** */
+SELECT BusinessName 
+FROM ShipmentTable 
+FOR ‘2019/07/08’

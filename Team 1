@@ -62,3 +62,41 @@ WHERE TotalSales>=AVG(TotalSales);
 SELECT ProductID, StrainName
 FROM Sales
 ORDER BY TotalSales LIMIT MIN 3;
+
+/* ***What are our profit amounts for a certain time period/month*** */
+
+SELECT  BusinessID, CompanyName, ProfitPeriod, ProfitAmount 
+
+FROM        PartnerProfitTable, CompanyProfitTable       
+
+WHERE       ProfitAmount> 0;
+
+/* ***What are the “laws” of all the states/counties that we operate in
+
+(if its legal,recreational/medical, who can buy/sell and where, etc)*** */
+
+SELECT * BusinessID, CompanyName, StateID,StateLegal,StateLicense   
+
+FROM PartnerInfo, StateinfoTable;
+
+/* ***What businesses are we partnered with?
+
+SELECT      PartnerID.PartnerInfo, CustomerInfo.CustomerID
+
+FROM        PartnerID 
+
+INNER JOIN  CustomerInfo ON PartnerID.PartnerInfo= CustomerInfo.CustomerID;
+
+/* ***What are the strains, types, and other notable facts for each individual product(indica/sativa, edibles/gummies,cbd,oils,etc. *** */
+
+SELECT  PartnerCatalog.ItemSKU,
+
+    WeedCatalog.StrainInfo
+
+FROM    PartnerCatalog, WeedCatalog
+
+INNER JOIN  WeedCatalog ON PartnerCatalog.ItemSKU= WeedCatalog.StrainInfo
+
+WHERE   PartnerCatalog=”Whatever parameter you need”;
+
+ /*Since there will be multiple partners with different selections at their discretion*/

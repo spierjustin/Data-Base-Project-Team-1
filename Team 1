@@ -1,1 +1,19 @@
+/* *** What are my Highest Grossing Strains *** */
+SELECT ProductID, StrainName, Quanitity
+FROM Sales
+	ORDER BY StrainName LIMIT MAX 5;
+    
+/* *** How many sales transactions did I perform for the Quarter 3? *** */
+SELECT COUNT(Sales*)
+FROM Sales
+FOR RANGE '2019/07/01' TO '2019/09/30';
 
+/* *** What are the main types of sales transaction I perform most of *** */
+SELECT PaymentType
+FROM Sales
+ORDER BY COUNT(PaymentType) DESC;
+
+/* *** What are the least favorable strains *** */
+SELECT ProductID, StrainName
+FROM Sales
+ORDER BY StrainName LIMIT MIN 5;

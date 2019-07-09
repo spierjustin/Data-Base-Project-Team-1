@@ -1,0 +1,11 @@
+SELECT FirstName, LastName, ApplicantID
+FROM APPLICANTS
+WHERE PriorExperience IS NOT NULL;
+
+SELECT FirstName, LastName, ApplicantID
+FROM APPLICANTS
+WHERE PriorExperience IS NULL;
+
+SELECT FirstName, LastName, ApplicantID
+FROM APPLICANTS
+WHERE GradYear='2020';

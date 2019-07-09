@@ -38,3 +38,27 @@ WHERE Region = ‘Midwest’ ;
 SELECT BusinessName 
 FROM ShipmentTable 
 FOR ‘2019/07/08’
+
+
+/* ***Which of our loyalty customers are buying from us the most? *** */
+SELECT COUNT(LoyaltyID)
+FROM Customers
+ORDER BY Purchases LIMIT MAX 5;
+
+
+/* *** Which category of marijuana should we focus on marketing more heavily and which don't require more marketing strategies? *** */
+SELECT ProductCategory, ProductID
+FROM Sales
+GROUP BY SUM(TotalSales), ProductCategory;
+
+
+/* ***Is where we are locating our store affecting how much product we are selling, what locations are performing the best? *** */
+SELECT StoreNumber, StoreRegion
+FROM Sales
+WHERE TotalSales>=AVG(TotalSales);
+
+
+/* ***Which strains are struggling and should be considered for clearance and eventually be discontinued? *** */
+SELECT ProductID, StrainName
+FROM Sales
+ORDER BY TotalSales LIMIT MIN 3;
